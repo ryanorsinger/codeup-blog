@@ -26,18 +26,27 @@ Route::get('/portfolio', function()
 	return "This is my portfolio";
 });
 
-Route::get('/sayhello/{name}', function($name)
+Route::get('/sayhello/{name?}', function($name)
 {
 	$data = array(
-		'name1'=> $name,
+		'name'=> $name,
 	);
 	return View::make('my-first-view')->with($data);
 });
 
-Route::get('/rolldice/{guess}', function($guess)
+
+Route::get('/rolldice/{guess?}', function($guess)
 {
+	$rand = rand(1,12);
+
+	$message = $rand == $guess ? "Way to go!" : "Wrong guess";
+
 	$data = array(
-		'name1'=> $name,
-	);
-	return View::make('my-first-view')->with($data);
+		'guess' => $guess,
+		'rand' => $rand,
+		);
+	echo $message;
+
+	return View::make('roll-dice')->with($data);
 });
+
