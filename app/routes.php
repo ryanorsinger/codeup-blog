@@ -11,20 +11,11 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
+Route::get('/', 'HomeController@showWelcome');
 
-Route::get('/resume', function()
-{
-	return View::make('resume');
-});
+Route::get('/resume', 'HomeController@showResume');
 
-Route::get('/portfolio', function()
-{
-	return "This is my portfolio";
-});
+Route::get('/portfolio', 'HomeController@showPortfolio');
 
 Route::get('/rolldice/{guess?}', function($guess)
 {	
