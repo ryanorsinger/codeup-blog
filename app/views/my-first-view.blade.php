@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.blog.master')
 
 @section('topscript')
 @stop
@@ -15,6 +15,6 @@
 
 @section('bottomscript')
 	<script>
-		alert('this is the javascript in the bottomscript');
+		// alert('this is the javascript in the bottomscript');
 	</script>
 @stop

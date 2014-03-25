@@ -9,7 +9,7 @@
 </head>
 <body>
     @yield('navbar')
-    @yield('contents')
+    @yield('content')
 
 
 

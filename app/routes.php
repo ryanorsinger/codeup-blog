@@ -17,21 +17,24 @@ Route::get('/resume', 'HomeController@showResume');
 
 Route::get('/portfolio', 'HomeController@showPortfolio');
 
-Route::get('/rolldice/{guess?}', function($guess)
-{	
-	$rand = rand(1,6);
+Route::get('/sayhello/{name}', 'HomeController@sayHello');
 
-	$message = $rand == $guess ? "Way to go!" : "Wrong guess";
 
-	$data = array(
-		'guess' => $guess,
-		'rand' => $rand,
-		);
+// Route::get('/rolldice/{guess?}', function($guess)
+// {	
+// 	$rand = rand(1,6);
 
-	echo $message;
+// 	$message = $rand == $guess ? "Way to go!" : "Wrong guess";
 
-	return View::make('roll-dice')->with($data);
-});
+// 	$data = array(
+// 		'guess' => $guess,
+// 		'rand' => $rand,
+// 		);
+
+// 	echo $message;
+
+// 	return View::make('roll-dice')->with($data);
+// });
 
 
 
