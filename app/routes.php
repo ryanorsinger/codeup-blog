@@ -18,7 +18,7 @@ Route::get('/', function()
 
 Route::get('/resume', function()
 {
-	return "This is my resume";
+	return View::make('resume');
 });
 
 Route::get('/portfolio', function()
@@ -26,18 +26,9 @@ Route::get('/portfolio', function()
 	return "This is my portfolio";
 });
 
-Route::get('/sayhello/{name?}', function($name)
-{
-	$data = array(
-		'name'=> $name,
-	);
-	return View::make('my-first-view')->with($data);
-});
-
-
 Route::get('/rolldice/{guess?}', function($guess)
-{
-	$rand = rand(1,12);
+{	
+	$rand = rand(1,6);
 
 	$message = $rand == $guess ? "Way to go!" : "Wrong guess";
 
@@ -45,8 +36,11 @@ Route::get('/rolldice/{guess?}', function($guess)
 		'guess' => $guess,
 		'rand' => $rand,
 		);
+
 	echo $message;
 
 	return View::make('roll-dice')->with($data);
 });
+
+
 

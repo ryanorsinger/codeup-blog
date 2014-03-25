@@ -13,7 +13,7 @@
 
 
 
-@seciton('bottomscript')
+@section('bottomscript')
 	<script>
 		alert('this is the javascript in the bottomscript');
 	</script>

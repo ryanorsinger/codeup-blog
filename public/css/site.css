@@ -1,0 +1,33 @@
+/* 
+multi
+line
+comment
+*/
+
+/* unvisited link (:link) */
+
+h1 {
+    color: blue;
+    font-size: 2.5em;
+}
+
+
+body { 
+		background-image: url('');
+		background-color: #A5B4C2;
+		text-align: center;
+		font-size: 1em;
+		color: #00F;
+}
+
+
+ul {
+	font-size: 1em;
+	text-align: center;
+}
+
+li {
+	font-size: 1em;
+	text-align: center;
+}
+
