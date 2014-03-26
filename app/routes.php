@@ -10,31 +10,14 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
-
 Route::get('/', 'HomeController@showWelcome');
+
+Route::resource('posts', 'PostsController');
+
+Route::resource('users', 'UsersController');
+
+Route::resource('pages', 'PagesController');
 
 Route::get('/resume', 'HomeController@showResume');
 
 Route::get('/portfolio', 'HomeController@showPortfolio');
-
-Route::get('/sayhello/{name}', 'HomeController@sayHello');
-
-
-// Route::get('/rolldice/{guess?}', function($guess)
-// {	
-// 	$rand = rand(1,6);
-
-// 	$message = $rand == $guess ? "Way to go!" : "Wrong guess";
-
-// 	$data = array(
-// 		'guess' => $guess,
-// 		'rand' => $rand,
-// 		);
-
-// 	echo $message;
-
-// 	return View::make('roll-dice')->with($data);
-// });
-
-
-

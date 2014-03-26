@@ -1,4 +1,4 @@
-@extends('layouts.blog.master')
+@extends('layouts.master')
 
 @section('topscript')
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
