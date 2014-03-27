@@ -5,17 +5,35 @@
 @stop
 
 @section('content')
-<div class="blog-post">
-	<form method="post" role="form" action="{{{ action('PostsController@store') }}}">
+<section class="blog-post">
+	{{ Form::open(array('action' => 'PostsController@edit', 
+						'class' => 'form-horizontal')) }}
+	
+	<div class="form-group {{ $errors->has('title') ? 'has error' : ''}}">
+	{{ Form::label('title', 'Title', array('class' => 'control-label col-sm-2')) }}
+	
+	{{ Form::text('title', null, array('class' => 'form-control', 'placeholder'=>'Post Title')) }}
 
-		    <label for="postTitle">Title</label>
-		    <input type="text" class="form-control" id="postTitle" name="title"placeholder="Post title" value="{{{ Input::old('title') }}}">
-  			{{ $errors->has('title') ? $errors->first('title', '<p><span class="help-block">:message</span><p>') : ''}}
-  		<label for="postContent">Body</lablel>
-  		<textarea class="form-control" id="postContent" name="body" rows="5">{{{ Input::old('body') }}}</textarea>
- 			{{ $errors->has('body') ? $errors->first('body', '<p><span class="help-block">:message</span><p>') : ''}}
+	{{ $errors->first('title', '<p><span class="help-block">:message</span><p>') }}
+	
+	{{ Form::label('body', 'Body') }}
+	
+	{{ Form::textarea('body', null , array('class' => 'form-control')) }}
 
-		<button type="submit" class="btn btn-default">Create Post</button>
-	</form>
+	{{ $errors->first('body', '<p><span class="help-block">:message</span><p>') }}
+
+	<button type="submit" class="btn btn-default">Create Post</button>
+		   
+		
+	{{ Form::close() }}
 </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</section>
 @stop
+
+

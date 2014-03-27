@@ -20,8 +20,7 @@ class PostsController extends \BaseController {
 	 */
 	public function create()
 	{
-
-		return View::make('posts.create');
+		return View::make('posts.create-edit');
 	}
 
 	/**
@@ -75,7 +74,9 @@ class PostsController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		return "GET	/posts/{post}/edit	edit	Show a form for editing a specific post";
+
+		$post = Post::find($id);
+		return View::make('posts.create-edit')->with('post', $post);
 	}
 
 	/**
@@ -86,12 +87,25 @@ class PostsController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//$post = Post::find($id);
-		//$post->title = "My new title";
-		//$post->save();
-		//return $post;
+		$post = Post::find($id);
+		// create the validator
+	    $validator = Validator::make(Input::all(), Post::$rules);
 
-		return "PUT	/posts/{post}	update	Update a specific post";
+	    // attempt validation
+	    if ($validator->fails())
+	    {
+	        // validation failed, redirect to the post create page with validation errors and old inputs
+   	        return Redirect::back()->withInput()->withErrors($validator);
+	    }
+	    else
+	    {    
+		    $post->title = Input::get('title');
+		    $post->body = Input::get('body');
+		    $post->save();
+
+	    return Redirect::action('PostsController@show')->with('id', $id);
+	    }
+
 	}
 
 	/**
