@@ -9,14 +9,8 @@ class PostsController extends \BaseController {
 	 */
 	public function index()
 	{
-		// var_dump(Input::has('test'));
-
-		// $name = Input::get('name');
-		// $test = Input::get('test');
-		// $data = array(
-		// 	'name',
-		// 	'test');
-		return "show a list of all posts";
+		$posts = Post::all();
+		return View::make('posts.index')->with('posts', $posts);
 	}
 
 	/**
@@ -37,8 +31,26 @@ class PostsController extends \BaseController {
 	 */
 	public function store()
 	{
-		Log::info(Input::all());
-	    return Redirect::back()->withInput();
+		// create the validator
+	    $validator = Validator::make(Input::all(), Post::$rules);
+
+	    // attempt validation
+	    if ($validator->fails())
+	    {
+	        // validation failed, redirect to the post create page with validation errors and old inputs
+   	        return Redirect::back()->withInput()->withErrors($validator);
+	    }
+	    else
+	    {
+	        // validation succeeded, create and save the post, redirect to index when done
+	        Log::info(Input::all());
+		    $post = new Post();
+		    $post->title = Input::get('title');
+		    $post->body = Input::get('body');
+		    $post->save();
+
+	    return Redirect::action('PostsController@index');
+	    }
 	} 
 
 	/**
@@ -49,7 +61,10 @@ class PostsController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		return "GET	/posts/{post}	show	Show a specific post";
+		// show a post for /posts/show/id
+		// $post = Post::findOrFail($id);
+		$post = Post::find($id);
+		return View::make('posts.show')->with('post', $post);
 	}
 
 	/**
@@ -71,6 +86,11 @@ class PostsController extends \BaseController {
 	 */
 	public function update($id)
 	{
+		//$post = Post::find($id);
+		//$post->title = "My new title";
+		//$post->save();
+		//return $post;
+
 		return "PUT	/posts/{post}	update	Update a specific post";
 	}
 
@@ -82,7 +102,9 @@ class PostsController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		return "delete	/posts/{post}	destroy	Delete a specific post";
+		$post = Post::findOrFail($id);
+		$post->delete();
+		return "Delete request process successfull.";
 	}
 
 }

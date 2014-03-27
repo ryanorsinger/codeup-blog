@@ -31,6 +31,7 @@
     	<ul class="nav navbar-nav">
         	<li><a href="{{{ action('HomeController@showPortfolio') }}}"> Portfolio </a></li>
         	<li><a href="{{{ action('HomeController@showResume') }}}">Resume</a></li>
+          <li><a href="{{{ action('PostsController@index') }}}">Blog</a></li>
 
         	<!-- <li class="active"><a href="resume.html">Resume</a></li> -->
         	

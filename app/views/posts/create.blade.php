@@ -7,13 +7,14 @@
 @section('content')
 <div class="blog-post">
 	<form method="post" role="form" action="{{{ action('PostsController@store') }}}">
-		<div class="form-group">
-    		<label for="postTitle">Title</label>
-    		<input type="text" class="form-control" id="postTitle" name="title"placeholder="Post title" value="{{{ Input::old('title') }}}">
-		</div>
-  		
+
+		    <label for="postTitle">Title</label>
+		    <input type="text" class="form-control" id="postTitle" name="title"placeholder="Post title" value="{{{ Input::old('title') }}}">
+  			{{ $errors->has('title') ? $errors->first('title', '<p><span class="help-block">:message</span><p>') : ''}}
   		<label for="postContent">Body</lablel>
   		<textarea class="form-control" id="postContent" name="body" rows="5">{{{ Input::old('body') }}}</textarea>
+ 			{{ $errors->has('body') ? $errors->first('body', '<p><span class="help-block">:message</span><p>') : ''}}
+
 		<button type="submit" class="btn btn-default">Create Post</button>
 	</form>
 </div>
