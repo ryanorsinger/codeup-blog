@@ -15,13 +15,9 @@
 		{{ Form::label('title', 'Title', array('class' => '')) }}
 	<div class="col-lg-8">	
 	{{ Form::text('title', null, array('class' => 'form-control', 'placeholder'=>'Title')) }}
-
 	{{ $errors->first('title', '<p><span class="help-block">:message</span><p>') }}
-	
 	{{ Form::label('body', 'Body') }}
-	
 	{{ Form::textarea('body', null , array('class' => 'form-control')) }}
-
 	{{ $errors->first('body', '<p><span class="help-block">:message</span><p>') }}
 
 @if (empty($post->id))
@@ -32,7 +28,7 @@
 		
 	{{ Form::close() }}
 </div>
-</div>
+</div>	
 </div>
 </div>
 </div>

@@ -78,6 +78,7 @@ class PostsController extends \BaseController {
 
 		$post = Post::find($id);
 		return View::make('posts.create-edit')->with('post', $post);
+
 	}
 
 	/**
@@ -96,6 +97,8 @@ class PostsController extends \BaseController {
 	    if ($validator->fails())
 	    {
 	        // validation failed, redirect to the post create page with validation errors and old inputs
+	       	Session::flash('errorMessage', 'Post could not be created - see form errors');
+
    	        return Redirect::back()->withInput()->withErrors($validator);
 	    }
 	    else
@@ -103,10 +106,10 @@ class PostsController extends \BaseController {
 		    $post->title = Input::get('title');
 		    $post->body = Input::get('body');
 		    $post->save();
-
-	    return Redirect::action('PostsController@show')->with('id', $id);
-	    }
-
+		   	Session::flash('successMessage', 'Post updated successfully');
+	    	// return Redirect::action(array('PostsController@show', $post->id));
+	    	return Redirect::action('PostsController@index');
+		}
 	}
 
 	/**
@@ -117,6 +120,7 @@ class PostsController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
+		// add the flash message here
 		$post = Post::findOrFail($id);
 		$post->delete();
 		return "Delete request process successfull.";
