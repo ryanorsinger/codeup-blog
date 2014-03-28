@@ -21,7 +21,7 @@
 	{{ $errors->first('body', '<p><span class="help-block">:message</span><p>') }}
 
 @if (empty($post->id))
-	<button type="submit" class="btn btn-default">Create New Post</button>
+	<button type="submit" class="btn btn-default">Create New Post</button>	
 @else
 	<button type="submit" class="btn btn-default">Save Changes</button>
 @endif
