@@ -9,7 +9,7 @@ class PostsController extends \BaseController {
 	 */
 	public function index()
 	{
-		$posts = Post::all();
+		$posts = Post::paginate(4);
 		return View::make('posts.index')->with('posts', $posts);
 	}
 
@@ -37,18 +37,19 @@ class PostsController extends \BaseController {
 	    if ($validator->fails())
 	    {
 	        // validation failed, redirect to the post create page with validation errors and old inputs
+	        Session::flash('errorMessage', 'Post could not be created - see form errors');
    	        return Redirect::back()->withInput()->withErrors($validator);
 	    }
 	    else
 	    {
-	        // validation succeeded, create and save the post, redirect to index when done
+	        // Save to db - validation succeeded, create and save the post, redirect to index when done
 	        Log::info(Input::all());
 		    $post = new Post();
 		    $post->title = Input::get('title');
 		    $post->body = Input::get('body');
 		    $post->save();
-
-	    return Redirect::action('PostsController@index');
+	    	Session::flash('successMessage', 'Post created successfully');
+	    	return Redirect::action('PostsController@index');
 	    }
 	} 
 
