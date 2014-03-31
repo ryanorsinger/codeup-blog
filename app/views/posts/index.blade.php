@@ -17,7 +17,7 @@
 	@foreach($posts as $post)	
 	<div class="blog-post">
 		<h2 class="blog-post-title"><a href="{{{ action('PostsController@show', $post->id) }}}">{{ $post->title }}</a></h2>
-			<p class="blog-post-meta">Written at {{ $post->created_at }} by Ryan &nbsp;|&nbsp; <a href="{{ action('PostsController@edit', $post->id )}}">Edit Post</a></p>
+			<p class="blog-post-meta">Written at {{ $post->created_at->format('l, F jS Y @ h:i:s A') }} by Ryan &nbsp;|&nbsp; <a href="{{ action('PostsController@edit', $post->id )}}">Edit Post</a></p>
 				<p> {{{ $post->body }}} </p>
 				<hr>			
 	</div>
