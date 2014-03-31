@@ -2,12 +2,13 @@
 
 use Carbon\Carbon;
 
-class Post extends Eloquent {
+class BaseModel extends Eloquent {
 	protected $table = 'users';
 
 	/**
 	* Validation rules
 	*/
+
 
 
 	public function getCreatedAtAttribute($value)
@@ -19,7 +20,7 @@ class Post extends Eloquent {
 
 	public function getUpdatedAtAttribute($value)
 	{
-		$utc = Carbon::updateFromFormat($this->getDateFormat(), $value);
+		$utc = Carbon::createFromFormat($this->getDateFormat(), $value);
     	return $utc->setTimezone('America/Chicago');
 	}
 
