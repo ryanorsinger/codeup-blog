@@ -25,7 +25,7 @@ class AddUsersToPost extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('drop', function($table) {
+		Schema::table('posts', function($table) {
 			$table->dropForeign('posts_user_id_foreign');
 			$table->dropColumn('user_id');
 		});

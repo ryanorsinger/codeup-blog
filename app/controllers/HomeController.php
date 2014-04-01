@@ -31,13 +31,28 @@ class HomeController extends BaseController {
 		return View::make('portfolio');
 	}
 
-	public function showLogin() {
-		return View::make('hello');
+	public function showLogin() 
+	{
+		return View::make('login');
 	}
 
-	public function doLogin() {
-		return View::maket('hello');
+	public function doLogin() 
+	{	
+		if (Auth::attempt(array('email' => Input::get('email'), 'password' => Input::get('password'))))
+		{
+			return Redirect::intended('/');
+		}
+		else
+		{
+			// login failed
+			return Redirect::back()->withInput();
+			
+		}
 	}
 
-
+	public function logout()
+	{
+		Auth::logout();
+		return Redirect::action('PostsController@index');	
+	}
 }

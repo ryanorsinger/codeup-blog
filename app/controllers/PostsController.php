@@ -8,7 +8,7 @@ class PostsController extends \BaseController {
 	    parent::__construct();
 
 	    //run auth filter before all methods on this controller except index and show
-	    $this->beforeFilter('auth.basic', array('except' => array('index', 'show')));
+	    //$this->beforeFilter('auth.basic', array('except' => array('index', 'show')));
 	}
 
 	/**
@@ -19,21 +19,20 @@ class PostsController extends \BaseController {
 	public function index()
 	{
 
-		$posts = Post::paginate(4);
+		//$posts = Post::paginate(4);
 		// return View::make('posts.index')->with('posts', $posts);
-
-
 		//show list of all posts
-		// $search = Input::get('search');
-		// $query = Post::orderBy('created_at', 'desc');
-		// if (is_null($search))
-		// {
-		// 	$posts = $query->paginate(3);
-		// } else {
-		// 	$posts = $query->where('title', 'LIKE', "%{$search}%")
-		// 				   ->orWhere('body', 'LIKE', "%{$search}%")
-		// 				   ->paginate(3);
-		// }
+		
+		$search = Input::get('search');
+		$query = Post::orderBy('created_at', 'desc');
+		if (is_null($search))
+		{
+			$posts = $query->paginate(3);
+		} else {
+			$posts = $query->where('title', 'LIKE', "%{$search}%")
+						   ->orWhere('body', 'LIKE', "%{$search}%")
+						   ->paginate(3);
+		}
 
 		return View::make('posts.index')->with('posts', $posts);
 	}
