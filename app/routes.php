@@ -10,6 +10,13 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
+
+/* Uncomment to Log Eloquent Queries */
+Event::listen('illuminate.query', function($sql, $bindings, $time){
+  Log::info($sql);
+  Log::info(implode($bindings, ', '));
+});
+
 Route::get('/', 'HomeController@showWelcome');
 
 Route::resource('posts', 'PostsController');
