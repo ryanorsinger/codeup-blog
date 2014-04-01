@@ -39,12 +39,9 @@
 					<li><a href="{{{ action('HomeController@showPortfolio') }}}"> Portfolio </a></li>
 					<li><a href="{{{ action('HomeController@showResume') }}}">Resume</a></li>
 					<li><a href="{{{ action('PostsController@index') }}}">Blog</a></li>
-					<!-- href="{{{ action('HomeController@logout') }}}">Logout ( {{{ Auth:: user()->email }}} )</a></li> -->
-					<li><a href="#">Login</a></li>
-
-					<!-- <li class="active"><a href="resume.html">Resume</a></li> -->
-					
+					<li><a href="#">Login</a></li>	
 			</ul>
+			
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="http://www.GitHub.com/RyanOrsinger "><i class="fa fa-github"></i> GitHub</a></li>
 				<li><a href="http://www.linkedin.com/in/ryanorsinger"><i class="fa fa-linkedin-square"></i> LinkedIn</a></li>

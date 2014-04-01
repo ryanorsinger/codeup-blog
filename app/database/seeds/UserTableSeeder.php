@@ -11,4 +11,7 @@ class UserTableSeeder extends Seeder {
         $user->password = 'admin@codeup.com';
         $user->save();
     }
+
+
+
 }

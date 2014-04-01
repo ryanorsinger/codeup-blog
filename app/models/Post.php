@@ -28,5 +28,7 @@ class Post extends BaseModel {
 	    $this->attributes['password'] = Hash::make($value);
 	}
 
+	
+
 }
 
