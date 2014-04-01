@@ -19,6 +19,24 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
 	 */
 	protected $hidden = array('password');
 
+
+	/**
+	* Relationship for one to many posts
+	**/
+	public function posts()
+	{
+		return $this->hasMany('Post');
+	}
+
+
+	/**
+	* Relationship for one to many comments
+	**/
+	// public function comments()
+	// {
+	// 	return $this->hasMany('Comment');
+	// }
+
 	/**
 	 * Get the unique identifier for the user.
 	 *

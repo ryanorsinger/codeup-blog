@@ -21,4 +21,3 @@ Route::resource('pages', 'PagesController');
 Route::get('/resume', 'HomeController@showResume');
 
 Route::get('/portfolio', 'HomeController@showPortfolio');
-

@@ -8,31 +8,52 @@
 	</style>
 
 @section('content')
-	
 <div class="container" id="main-content">
-	
-
-	<h1 class="blog-title">Welcome to my Blog</h1>
-	<div class="col-md-10">
-	@foreach($posts as $post)	
-	<div class="blog-post">
-		<h2 class="blog-post-title"><a href="{{{ action('PostsController@show', $post->id) }}}">{{ $post->title }}</a></h2>
-			<p class="blog-post-meta">Written at {{ $post->created_at->format('l, F jS Y @ h:i:s A') }} by Ryan &nbsp;|&nbsp; <a href="{{ action('PostsController@edit', $post->id )}}">Edit Post</a></p>
+<div class="row">
+		<div class="col-md-8">
+		@foreach($posts as $post)	
+			<!-- blog entry -->
+			<div class="blog-post">
+			<h2 class="blog-post-title"><a href="{{{ action('PostsController@show', $post->id) }}}">{{ $post->title }}</a></h2>
+			<p>written by Ryan</p>
+			<p><span class="glyphicon glyphicon-time"></span> created {{ $post->created_at->format('l, F jS Y @ h:i:s A') }}</p>
+			<p class="blog-post-meta"><a href="{{ action('PostsController@edit', $post->id )}}">Edit Post</a></p>
 				<p> {{{ $post->body }}} </p>
+				</div>
 				<hr>			
-	</div>
-	
 	@endforeach
+	{{ $posts->appends(array('search' => Input::get('search')))->links() }}
 	</div>
-		<div class="col-md-3">
-		<h2><a href="{{{ action('PostsController@create') }}}">Create New Post</a></h2>
-		<p>{{ $posts->links() }}</p>	
+	<!-- right side column menu -->
+		<div class="col-md-4">
+		<div class="well">
+			<h4>Blog Search</h4>
+			{{ Form::open(array('action' => array('PostsController@index'), 'class' => 'form-horizontal', 'method' => 'GET')) }}
+
+			<!-- {{ Form::open(array('action' => 'PostsController@store', 'class' => 'form-horizontal')) }} -->
+			<div class="input-group">
+			{{ Form::text('search', null, 'class' => 'form-control') }}
+
+			{{ Form::submit('Search') }}
+
+			<!-- <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+                  </span> -->
+
+			{{ Form:: close() }}
 	</div>
+	</div>
+
+
+
+		<div class="well">
+			<h2><a href="{{{ action('PostsController@create') }}}">Create New Post</a></h2>
+			
+		</div>
+
+
 </div>
-	<hr>
-	<p>
-	</p>
-
-
+</div>
+</div>
 
 @stop
