@@ -31,10 +31,13 @@ class HomeController extends BaseController {
 		return View::make('portfolio');
 	}
 
-	public function sayHello($name)
-	{
-    	$data = array('name' => $name);
-    	return View::make('my-first-view')->with($data);
+	public function showLogin() {
+		return View::make('hello');
 	}
+
+	public function doLogin() {
+		return View::maket('hello');
+	}
+
 
 }

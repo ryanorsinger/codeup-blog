@@ -32,7 +32,7 @@
 
 			<!-- {{ Form::open(array('action' => 'PostsController@store', 'class' => 'form-horizontal')) }} -->
 			<div class="input-group">
-			{{ Form::text('search', null, 'class' => 'form-control') }}
+			{{ Form::text('search', null) }}
 
 			{{ Form::submit('Search') }}
 
