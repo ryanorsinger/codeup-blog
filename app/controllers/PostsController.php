@@ -23,7 +23,7 @@ class PostsController extends \BaseController {
 		// return View::make('posts.index')->with('posts', $posts);
 
 
-		// show list of all posts
+		//show list of all posts
 		// $search = Input::get('search');
 		// $query = Post::orderBy('created_at', 'desc');
 		// if (is_null($search))

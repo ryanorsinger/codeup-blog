@@ -19,6 +19,10 @@ Event::listen('illuminate.query', function($sql, $bindings, $time){
 
 Route::get('/', 'HomeController@showWelcome');
 
+Route::get('/login', 'HomeController@showLogin');
+
+Route::post('/login', 'HomeController@doLogin');
+
 Route::resource('posts', 'PostsController');
 
 Route::resource('users', 'UsersController');
