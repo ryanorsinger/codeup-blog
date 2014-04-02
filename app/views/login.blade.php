@@ -5,17 +5,20 @@
 
 @section('content')
 
-{{ Form::open(array('action' => 'HomeController@doLogin', 'class' => 'form-signin')) }}
+		{{ Form::open(array('action' => 'HomeController@doLogin', 'class' => 'form-signin')) }}
+		<h2 class="form-signin-heading">Please sign in</h2>
+		{{ Form::email('email', null, array('class' => 'form-control', 'placeholder' => 'email address', 'autofocus', 'required')) }}
 
-        <h2 class="form-signin-heading">Please sign in</h2>
-        <input name="email" type="email" class="form-control" placeholder="Email address" required="" autofocus="">
-        <input name="password" type="password" class="form-control" placeholder="Password" required="">
-        <label class="checkbox">
+		{{ $errors->first('email', '<p><span class="help-block">:message</span><p>') }}
 
-       	<input name="remember" type="checkbox" value="remember-me"> Remember me
+		{{ Form::password('password', array('class' => 'form-control', ' placeholder' => 'password', 'required')) }}
 
-        </label>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-{{ Form::close() }}
+		{{ $errors->first('password', '<p><span class="help-block">:message</span><p>') }}
+
+
+		<p>{{ Form::checkbox('remember', 'remember') }} &nbsp; remember me </p>
+
+        {{ Form::submit('Sign In', array('class' => "btn btn-lg btn-primary btn-block")) }}
+		{{ Form::close() }}
 
 @stop

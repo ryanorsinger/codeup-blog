@@ -40,11 +40,13 @@ class HomeController extends BaseController {
 	{	
 		if (Auth::attempt(array('email' => Input::get('email'), 'password' => Input::get('password'))))
 		{
+			Session::flash('loginGood', 'User logged in successfully. Welcome!');
 			return Redirect::intended('/');
 		}
 		else
 		{
 			// login failed
+			Session::flash('loginBad', 'Invalid login');
 			return Redirect::back()->withInput();
 			
 		}
@@ -53,6 +55,6 @@ class HomeController extends BaseController {
 	public function logout()
 	{
 		Auth::logout();
-		return Redirect::action('PostsController@index');	
+		return Redirect::action('HomeController@showLogin');	
 	}
 }

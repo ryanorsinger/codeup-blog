@@ -21,6 +21,14 @@
 	@if (Session::has('errorMessage'))
 	    <div class="alert alert-danger">{{{ Session::get('errorMessage') }}}</div>
 	@endif
+	@if (Session::has('loginGood'))
+		<div class="alert alert-success">{{{ Session::get('loginGood') }}}</div>
+	@endif
+	@if (Session::has('loginBad'))
+		<div class="alert alert-danger">{{{ Session::get('loginBad') }}}</div>
+	@endif
+	
+
 		<nav class="navbar navbar-default" role="navigation">
 			<div class="container-fluid">
 		<div class="navbar-header">
@@ -39,10 +47,16 @@
 					<li><a href="{{{ action('HomeController@showPortfolio') }}}"> Portfolio </a></li>
 					<li><a href="{{{ action('HomeController@showResume') }}}">Resume</a></li>
 					<li><a href="{{{ action('PostsController@index') }}}">Blog</a></li>
-					<li><a href="#">Login</a></li>	
+						
 			</ul>
-			
+
 			<ul class="nav navbar-nav navbar-right">
+				@if (Auth::check())
+				<li><a href="{{{ action('HomeController@logout') }}}">Logout ({{{ Auth::user()->username }}})</a></li>
+				@else
+				<li><a href="{{{ action('HomeController@showLogin') }}}">Login</a></li>
+				@endif
+
 				<li><a href="http://www.GitHub.com/RyanOrsinger "><i class="fa fa-github"></i> GitHub</a></li>
 				<li><a href="http://www.linkedin.com/in/ryanorsinger"><i class="fa fa-linkedin-square"></i> LinkedIn</a></li>
 				<li><a href="twitter.com/orsinger"><i class="fa fa-twitter"></i> Twitter</a></li>

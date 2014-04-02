@@ -1,6 +1,6 @@
 <?php
 
-class UserTableSeeder extends Seeder {
+class PostTableSeeder extends Seeder {
 
     public function run()
     {
@@ -24,8 +24,8 @@ class UserTableSeeder extends Seeder {
 
         $user = new User();
         $user->email = 'connie@codeup.com';
-        $user->password = 'bob@codeup.com';
-        $user->first_name = 'Bob';
+        $user->password = 'connie@codeup.com';
+        $user->first_name = 'Connie';
         $user->last_name = 'Dobs';
         $user->username = 'JRBobDobbs';
         $user->save();
