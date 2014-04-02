@@ -14,15 +14,13 @@
 
 </head>
 <body>
+
 	<!-- <div id="wrap"> -->
 	@if (Session::has('successMessage'))
 	<div class="alert alert-success">{{{ Session::get('successMessage') }}}</div>
 	@endif
 	@if (Session::has('errorMessage'))
 	    <div class="alert alert-danger">{{{ Session::get('errorMessage') }}}</div>
-	@endif
-	@if (Session::has('loginGood'))
-		<div class="alert alert-success">{{{ Session::get('loginGood') }}}</div>
 	@endif
 	@if (Session::has('loginBad'))
 		<div class="alert alert-danger">{{{ Session::get('loginBad') }}}</div>
@@ -52,7 +50,7 @@
 
 			<ul class="nav navbar-nav navbar-right">
 				@if (Auth::check())
-				<li><a href="{{{ action('HomeController@logout') }}}">Logout ({{{ Auth::user()->username }}})</a></li>
+				<li><a href="{{{ action('HomeController@logout') }}}">Logout ({{ Auth::user()->username }})</a></li>
 				@else
 				<li><a href="{{{ action('HomeController@showLogin') }}}">Login</a></li>
 				@endif
