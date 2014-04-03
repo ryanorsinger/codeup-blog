@@ -36,7 +36,7 @@ App::after(function($request, $response)
 Route::filter('post.protect', function($route) {
 	//retrieve post id from route (name based on table)
 	// $slug = $route->getParameter('posts');
-	// $route->getParameter('posts');
+	// $slug = $route->getParameter('posts');
 
 	// lookup the post
 	// $post = Post::findBySlug($slug); 
