@@ -13,6 +13,7 @@ class PostsController extends \BaseController {
 	    // run post protect filter 
 	    $this->beforeFilter('post.protect', array('only' => array('edit', 'update', 'destroy')));
 	}
+	
 
 	/**
 	 * Display a listing of the resource.

@@ -6,29 +6,15 @@
 		<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 		<link rel="stylesheet" href="/css/flatly.css">
 		<link href="/css/signin.css" rel="stylesheet">
-		
-		@yield('headerscript')
-		<div container>
-				@yield('topscript')
-	</div>
 
+		@yield('headerscript')
+		
 </head>
 <body>
 
-	<!-- <div id="wrap"> -->
-	@if (Session::has('successMessage'))
-	<div class="alert alert-success">{{{ Session::get('successMessage') }}}</div>
-	@endif
-	@if (Session::has('errorMessage'))
-	    <div class="alert alert-danger">{{{ Session::get('errorMessage') }}}</div>
-	@endif
-	@if (Session::has('loginBad'))
-		<div class="alert alert-danger">{{{ Session::get('loginBad') }}}</div>
-	@endif
-	
-
 		<nav class="navbar navbar-default" role="navigation">
 			<div class="container-fluid">
+		
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 				<span class="sr-only">Toggle navigation</span>
@@ -39,7 +25,6 @@
 			<a class="navbar-brand" href="#">Ryan Orsinger</a>
 		</div>
 
-		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 					<li><a href="{{{ action('HomeController@showPortfolio') }}}"> Portfolio </a></li>
@@ -75,16 +60,19 @@
 </nav>
 </div>
 
-<div container id='header'>
-		@yield('header')
-</div>
 
-<div container id='main-content'>
-		@yield('content')
-</div>
-		
+@yield('content')
 
 
+	@if (Session::has('successMessage'))
+	<div class="alert alert-success">{{{ Session::get('successMessage') }}}</div>
+	@endif
+	@if (Session::has('errorMessage'))
+	    <div class="alert alert-danger">{{{ Session::get('errorMessage') }}}</div>
+	@endif
+	@if (Session::has('loginBad'))
+		<div class="alert alert-danger">{{{ Session::get('loginBad') }}}</div>
+	@endif
 
 @yield('bottomscript')
 	
