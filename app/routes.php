@@ -31,6 +31,8 @@ Route::resource('users', 'UsersController');
 
 Route::resource('pages', 'PagesController');
 
+//Route::get('/tags/{name}')
+
 Route::get('/resume', 'HomeController@showResume');
 
 Route::get('/portfolio', 'HomeController@showPortfolio');

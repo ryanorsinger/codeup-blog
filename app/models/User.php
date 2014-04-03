@@ -20,6 +20,35 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
 	    'password'       => 'required|max:100'
 	);
 
+	// superuser ID
+	const SUPERUSER_ID = 1;
+
+	// user roles
+	const ROLE_ADMIN = 1;
+	const ROLE_USER = 2;
+	public static $ROLES = array(
+		array('id' => 1, 'name' => 'Administrator'),
+		array('id' => 2, 'name' => 'Standard User')
+		);
+
+
+	/**
+	* 
+	*/
+	public function isAdmin()
+	{
+		return $this->role_id == self::ROLE_ADMIN;
+	}
+
+	
+	/** determine if user can manage (edit, delete) a post
+	*
+	*/
+	public function canManagePost($post)
+	{
+		return $this->isAdmin() || $this->id == $post->user_id;
+	}
+
 
 	/**
 	 * The attributes excluded from the model's JSON form.

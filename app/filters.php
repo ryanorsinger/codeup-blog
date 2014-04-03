@@ -33,6 +33,25 @@ App::after(function($request, $response)
 |
 */
 
+Route::filter('post.protect', function($route) {
+	//retrieve post id from route (name based on table)
+	// $slug = $route->getParameter('posts');
+	// $route->getParameter('posts');
+
+	// lookup the post
+	// $post = Post::findBySlug($slug); 
+	// Post::find($id);
+
+	// redirect if user cannot manage the post
+	// if (!Auth::user()->canManagePost($post)) {
+		// return Redirect::action('PostsController@show', $slug);
+});
+
+Route::filter('user.protect', function($route) {
+	// retrieve user id from route 
+
+});
+
 Route::filter('auth', function()
 {
 	if (Auth::guest()) return Redirect::guest('login');

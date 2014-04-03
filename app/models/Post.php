@@ -9,6 +9,7 @@ class Post extends BaseModel {
 		return $this->belongsTo('User');
 	}
 
+
 	
 	/**
 	* Validation rules
@@ -28,7 +29,25 @@ class Post extends BaseModel {
 	    $this->attributes['password'] = Hash::make($value);
 	}
 
-	
+	/**
+	* Helper to assign images to posts and handle upload
+	*/
+	public function assignImage($inputFile)
+	{
+		
+		    $imagePath = base_path() . '/public/images/';
+		    $extension = $inputFile->getClientOriginalExtension();
+		    $imageName = uniqid() . '.' . $extension;
+		    $fullPathToImage = $imagePath . $imageName;
+		    $inputFile->move($imagePath, $fullPathToImage);
+		    $this->attribute['image'] = '/images/' . $imageName;
+	}
+
+	public function delete_img()
+	{
+		//File::delete()
+		// 
+	}
 
 }
 
